@@ -1,4 +1,3 @@
-% (AB)C = A(BC)
 fof(associativity, axiom,
 	! [A,B,C] : mult(mult(A, B), C) = mult(A, mult(B, C))).
 

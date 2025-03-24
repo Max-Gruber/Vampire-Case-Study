@@ -3,11 +3,9 @@
 % penrose identity).
 %-----------------------------------------------------------------------
 
-% (AB)C = A(BC)
 fof(associativity, axiom,
 	! [A,B,C] : mult(mult(A, B), C) = mult(A, mult(B, C))).
 
-% Moore-Penrose Inverse: AXA = A, XAX = X, (AX)* = AX, (XA)* = XA
 fof(mpi, axiom,
 	! [A,X] : (mpi(A, X) <=>
 		A = mult(A, mult(X, A)) &

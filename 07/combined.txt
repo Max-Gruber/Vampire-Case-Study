@@ -1,23 +1,21 @@
-% i*A = A
+% Both cases in one file: A has orthonormal columns or orthonormal rows
+%-----------------------------------------------------------------------
+
 fof(left_identity, axiom,
 	! [A] : mult(i, A) = A).
-% A*i = A
+	
 fof(right_identity, axiom,
 	! [A] : mult(A, i) = A).
-
-% (AB)C = A(BC)
+	
 fof(associativity, axiom,
 	! [A,B,C] : mult(mult(A, B), C) = mult(A, mult(B, C))).
-
-% (A*)* = A
+	
 fof(adjoint_twice, axiom,
 	! [A] : adjoint(adjoint(A)) = A).
-
-% (AB)* = B*A*
+	
 fof(adjoint_mult, axiom, 
 	! [A,B] : adjoint(mult(A, B)) = mult(adjoint(B), adjoint(A))).
-
-% Moore-Penrose Inverse: AXA = A, XAX = X, (AX)* = AX, (XA)* = XA
+	
 fof(mpi, axiom,
 	! [A,X] : (mpi(A, X) <=>
 		A = mult(A, mult(X, A)) &
@@ -27,20 +25,11 @@ fof(mpi, axiom,
 			
 %-----------------------------------------------------------------------
 
-fof(theorem14, conjecture,
-	! [A,X,Y] : (
-		mpi(A, X) 
-		=>
-		(
-			mpi(mult(A, adjoint(A)), Y)
-			=>
-			X = mult(adjoint(A), Y)
-		)
-		&
-		(
-			mpi(mult(adjoint(A), A), Y)
-			=>
-			X = mult(Y, adjoint(A))
-		)
+fof(theorem, conjecture,
+	! [A] : (
+		mult(adjoint(A), A) = i | 
+		mult(A, adjoint(A)) = i
+		=> 
+		mpi(A, adjoint(A))
 	)
 ).

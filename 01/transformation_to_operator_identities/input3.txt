@@ -2,7 +2,6 @@
 % mpi can be removed by replacing all occurrences.
 %-----------------------------------------------------------------------
 
-% (AB)C = A(BC)
 fof(associativity, axiom,
 	! [A,B,C] : mult(mult(A, B), C) = mult(A, mult(B, C))).
 

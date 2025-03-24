@@ -1,7 +1,7 @@
-% i*A = A
+% i A = A
 fof(left_identity, axiom,
 	! [A] : mult(i, A) = A).
-% A*i = A
+% A i = A
 fof(right_identity, axiom,
 	! [A] : mult(A, i) = A).
 

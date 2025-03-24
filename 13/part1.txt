@@ -22,5 +22,12 @@ fof(mpi, axiom,
 			
 %-----------------------------------------------------------------------
 
-fof(uniqueness, conjecture,
-	! [A,X,Y] : (mpi(A, X) & mpi(A, Y) => X = Y)).
+fof(theorem, conjecture,
+	! [A,X,Y,Z] : (
+		mpi(mult(adjoint(A), A), X) &
+		mpi(A, Y) &
+		mpi(adjoint(A), Z)
+		=>
+		X = mult(Y, Z)
+	)
+).

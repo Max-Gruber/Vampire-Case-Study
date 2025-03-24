@@ -1,19 +1,15 @@
-% i*A = A
 fof(left_identity, axiom,
 	! [A] : mult(i, A) = A).
-% A*i = A
+
 fof(right_identity, axiom,
 	! [A] : mult(A, i) = A).
 
-% (AB)C = A(BC)
 fof(associativity, axiom,
 	! [A,B,C] : mult(mult(A, B), C) = mult(A, mult(B, C))).
 
-% (A*)* = A
 fof(adjoint_twice, axiom,
 	! [A] : adjoint(adjoint(A)) = A).
 
-% (AB)* = B*A*
 fof(adjoint_mult, axiom, 
 	! [A,B] : adjoint(mult(A, B)) = mult(adjoint(B), adjoint(A))).
 
