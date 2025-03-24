@@ -1,0 +1,38 @@
+% i*A = A
+fof(left_identity, axiom,
+	! [A] : mult(i, A) = A).
+% A*i = A
+fof(right_identity, axiom,
+	! [A] : mult(A, i) = A).
+
+% (AB)C = A(BC)
+fof(associativity, axiom,
+	! [A,B,C] : mult(mult(A, B), C) = mult(A, mult(B, C))).
+
+% (A*)* = A
+fof(adjoint_twice, axiom,
+	! [A] : adjoint(adjoint(A)) = A).
+
+% (AB)* = B*A*
+fof(adjoint_mult, axiom, 
+	! [A,B] : adjoint(mult(A, B)) = mult(adjoint(B), adjoint(A))).
+
+% Moore-Penrose Inverse: AXA = A, XAX = X, (AX)* = AX, (XA)* = XA
+fof(mpi, axiom,
+	! [A,X] : (mpi(A, X) <=>
+		A = mult(A, mult(X, A)) &
+		X = mult(X, mult(A, X)) &
+		adjoint(mult(A, X)) = mult(A, X) &
+		adjoint(mult(X, A)) = mult(X, A))).
+			
+%-----------------------------------------------------------------------
+
+fof(theorem, conjecture,
+	! [A,X,Y,Z] : (
+		mpi(mult(A, adjoint(A)), X) &
+		mpi(adjoint(A), Y) &
+		mpi(A, Z)
+		=>
+		X = mult(Y, Z)
+	)
+).

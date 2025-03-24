@@ -1,0 +1,23 @@
+% (AB)C = A(BC)
+fof(associativity, axiom,
+	! [A,B,C] : mult(mult(A, B), C) = mult(A, mult(B, C))).
+
+fof(axiom1, axiom, mult(a, mult(x, a)) = a).
+fof(axiom2, axiom, mult(x, mult(a, x)) = x).
+fof(axiom3, axiom, mult(x_, a_) = mult(a, x)).
+fof(axiom4, axiom, mult(a_, x_) = mult(x, a)).
+fof(axiom5, axiom, mult(a_, mult(x_, a_)) = a_).
+fof(axiom6, axiom, mult(x_, mult(a_, x_)) = x_).
+fof(axiom7, axiom, mult(at, mult(xt, at)) = at).
+fof(axiom8, axiom, mult(xt, mult(at, xt)) = xt).
+fof(axiom9, axiom, mult(ac, xc) = mult(xt, at)).
+fof(axiom10, axiom, mult(xc, ac) = mult(at, xt)).
+fof(axiom11, axiom, mult(ac, mult(xc, ac)) = ac).
+fof(axiom12, axiom, mult(xc, mult(ac, xc)) = xc).
+fof(axiom13, axiom, a = ac).
+fof(axiom14, axiom, at = a_).
+
+fof(theorem, conjecture, x = xc).
+
+
+

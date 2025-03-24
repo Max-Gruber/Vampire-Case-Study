@@ -1,0 +1,24 @@
+%-----------------------------------------------------------------------
+% mpi can be removed by replacing all occurrences.
+%-----------------------------------------------------------------------
+
+% (AB)C = A(BC)
+fof(associativity, axiom,
+	! [A,B,C] : mult(mult(A, B), C) = mult(A, mult(B, C))).
+
+%-----------------------------------------------------------------------
+
+fof(uniqueness, conjecture,
+	! [A,X,Y] : (
+		A = mult(A, mult(X, A)) &
+		X = mult(X, mult(A, X)) &
+		mult(adjoint(X), adjoint(A)) = mult(A, X) &
+		mult(adjoint(A), adjoint(X)) = mult(X, A) & 
+		A = mult(A, mult(Y, A)) &
+		Y = mult(Y, mult(A, Y)) &
+		mult(adjoint(Y), adjoint(A)) = mult(A, Y) &
+		mult(adjoint(A), adjoint(Y)) = mult(Y, A)
+		=> 
+		X = Y
+	)
+).

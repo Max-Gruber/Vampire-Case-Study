@@ -1,0 +1,49 @@
+% (AB)C = A(BC)
+fof(associativity, axiom,
+	! [A,B,C] : mult(mult(A, B), C) = mult(A, mult(B, C))).
+
+fof(axiom01, axiom, mult(a, mult(x, a)) = a).
+fof(axiom02, axiom, mult(x, mult(a, x)) = x).
+fof(axiom03, axiom, mult(x_, a_) = mult(a, x)).
+fof(axiom04, axiom, mult(a_, x_) = mult(x, a)).
+fof(axiom05, axiom, mult(a_, mult(x_, a_)) = a_).
+fof(axiom06, axiom, mult(x_, mult(a_, x_)) = x_).
+fof(axiom07, axiom, a = mult(u, mult(s, v))).
+fof(axiom08, axiom, a_ = mult(v_, mult(s_, u_))).
+fof(axiom09, axiom, mult(u, u_) = i1).
+fof(axiom10, axiom, mult(u_, u) = i1).
+fof(axiom11, axiom, mult(v, v_) = i2).
+fof(axiom12, axiom, mult(v_, v) = i2).
+fof(axiom13, axiom, mult(s, mult(y, s)) = s).
+fof(axiom14, axiom, mult(y, mult(s, y)) = y).
+fof(axiom15, axiom, mult(y_, s_) = mult(s, y)).
+fof(axiom16, axiom, mult(s_, y_) = mult(y, s)).
+fof(axiom17, axiom, mult(s_, mult(y_, s_)) = s_).
+fof(axiom18, axiom, mult(y_, mult(s_, y_)) = y_).
+fof(axiom19, axiom, mult(i1, a) = a).
+fof(axiom20, axiom, mult(a_, i1) = a_).
+fof(axiom21, axiom, mult(a, i2) = a).
+fof(axiom22, axiom, mult(i2, a_) = a_).
+fof(axiom23, axiom, mult(x, i1) = x).
+fof(axiom24, axiom, mult(i1, x_) = x_).
+fof(axiom25, axiom, mult(i2, x) = x).
+fof(axiom26, axiom, mult(x_, i2) = x_).
+fof(axiom27, axiom, mult(i1, s) = s).
+fof(axiom28, axiom, mult(s_, i1) = s_).
+fof(axiom29, axiom, mult(i2, s) = s).
+fof(axiom30, axiom, mult(i2, s_) = s_).
+fof(axiom31, axiom, mult(y, i1) = y).
+fof(axiom32, axiom, mult(i1, y_) = y_).
+fof(axiom33, axiom, mult(i2, y) = y).
+fof(axiom34, axiom, mult(y_, i2) = y_).
+fof(axiom35, axiom, mult(u, i1) = u).
+fof(axiom36, axiom, mult(u_, i1) = u_).
+fof(axiom37, axiom, mult(i1, u) = u).
+fof(axiom38, axiom, mult(i1, u_) = u_).
+fof(axiom39, axiom, mult(v, i2) = v).
+fof(axiom40, axiom, mult(v_, i2) = v_).
+fof(axiom41, axiom, mult(i2, v) = v).
+fof(axiom42, axiom, mult(i2, v_) = v_).
+
+fof(theorem, conjecture, x = mult(v_, mult(y, u_))).
+

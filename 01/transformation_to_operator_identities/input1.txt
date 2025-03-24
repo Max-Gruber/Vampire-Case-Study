@@ -1,0 +1,25 @@
+%-----------------------------------------------------------------------
+% The output for input 0 shows that axioms 1, 2, and 4 are not needed
+% for the proof and can be removed.
+%-----------------------------------------------------------------------
+
+% (AB)C = A(BC)
+fof(associativity, axiom,
+	! [A,B,C] : mult(mult(A, B), C) = mult(A, mult(B, C))).
+
+% (AB)* = B*A*
+fof(adjoint_mult, axiom, 
+	! [A,B] : adjoint(mult(A, B)) = mult(adjoint(B), adjoint(A))).
+
+% Moore-Penrose Inverse: AXA = A, XAX = X, (AX)* = AX, (XA)* = XA
+fof(mpi, axiom,
+	! [A,X] : (mpi(A, X) <=>
+		A = mult(A, mult(X, A)) &
+		X = mult(X, mult(A, X)) &
+		adjoint(mult(A, X)) = mult(A, X) &
+		adjoint(mult(X, A)) = mult(X, A))).
+
+%-----------------------------------------------------------------------
+
+fof(uniqueness, conjecture,
+	! [A,X,Y] : (mpi(A, X) & mpi(A, Y) => X = Y)).

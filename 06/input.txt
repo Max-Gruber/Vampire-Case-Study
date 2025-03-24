@@ -1,0 +1,81 @@
+% i*A = A
+fof(left_identity, axiom,
+	! [A] : mult(i, A) = A).
+% A*i = A
+fof(right_identity, axiom,
+	! [A] : mult(A, i) = A).
+
+% (AB)C = A(BC)
+fof(associativity, axiom,
+	! [A,B,C] : mult(mult(A, B), C) = mult(A, mult(B, C))).
+
+% Moore-Penrose Inverse: AXA = A, XAX = X, (AX)* = AX, (XA)* = XA
+fof(mpi, axiom,
+	! [A,X] : (mpi(A, X) <=>
+		A = mult(A, mult(X, A)) &
+		X = mult(X, mult(A, X)) &
+		adjoint(mult(A, X)) = mult(A, X) &
+		adjoint(mult(X, A)) = mult(X, A))).
+			
+%-----------------------------------------------------------------------
+
+% (A*)* = A
+fof(adjoint_adjoint, axiom,
+	! [A] : adjoint(adjoint(A)) = A).
+
+% (A*)^C = A^T
+fof(adjoint_conjugate, axiom,
+	! [A] : conjugate(adjoint(A)) = transpose(A)).
+
+% (A*)^T = A^C
+fof(adjoint_transpose, axiom,
+	! [A] : transpose(adjoint(A)) = conjugate(A)).
+
+% (A^T)* = A^C
+fof(transpose_adjoint, axiom,
+	! [A] : adjoint(transpose(A)) = conjugate(A)).
+
+% (A^T)^C = A*
+fof(transpose_conjugate, axiom,
+	! [A] : conjugate(transpose(A)) = adjoint(A)).
+
+% (A^T)^T = A
+fof(transpose_transpose, axiom,
+	! [A] : transpose(transpose(A)) = A).
+	
+% (A^C)* = T
+fof(conjugate_adjoint, axiom,
+	! [A] : adjoint(conjugate(A)) = transpose(A)).
+
+% (A^C)^C = A
+fof(conjugate_conjugate, axiom,
+	! [A] : conjugate(conjugate(A)) = A).
+
+% (A^C)^T = A
+fof(conjugate_transpose, axiom,
+	! [A] : transpose(conjugate(A)) = adjoint(A)).
+
+
+% (AB)* = B*A*
+fof(adjoint_mult, axiom, 
+	! [A,B] : adjoint(mult(A, B)) = mult(adjoint(B), adjoint(A))).
+
+% (AB)^C = A^C B^C
+fof(conjugate_mult, axiom, 
+	! [A,B] : conjugate(mult(A, B)) = mult(conjugate(A), conjugate(B))).
+
+% (AB)^T = B^T A^T
+fof(transpose_mult, axiom, 
+	! [A,B] : transpose(mult(A, B)) = mult(transpose(B), transpose(A))).
+			
+%-----------------------------------------------------------------------
+
+fof(theorem, conjecture,
+	! [A,X] : (
+		mpi(A, X) &
+		A = conjugate(A) &
+		transpose(A) = adjoint(A)
+		=>
+		X = conjugate(X)
+	)
+).

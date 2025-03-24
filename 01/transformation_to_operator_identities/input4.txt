@@ -1,0 +1,29 @@
+%-----------------------------------------------------------------------
+% Operator identities can be obtained by introducing a constant for each
+% variable and its adjoint and by adding an axiom for each existing 
+% axiom that is not self-adjoint.
+%-----------------------------------------------------------------------
+
+% (AB)C = A(BC)
+fof(associativity, axiom,
+	! [A,B,C] : mult(mult(A, B), C) = mult(A, mult(B, C))).
+
+fof(axiom01, axiom, mult(a, mult(x, a)) = a).
+fof(axiom02, axiom, mult(x, mult(a, x)) = x).
+fof(axiom03, axiom, mult(x_, a_) = mult(a, x)).
+fof(axiom04, axiom, mult(a_, x_) = mult(x, a)).
+fof(axiom05, axiom, mult(a_, mult(x_, a_)) = a_).
+fof(axiom06, axiom, mult(x_, mult(a_, x_)) = x_).
+fof(axiom07, axiom, mult(a, mult(y, a)) = a).
+fof(axiom08, axiom, mult(y, mult(a, y)) = y).
+fof(axiom09, axiom, mult(y_, a_) = mult(a, y)).
+fof(axiom10, axiom, mult(a_, y_) = mult(y, a)).
+fof(axiom11, axiom, mult(a_, mult(y_, a_)) = a_).
+fof(axiom12, axiom, mult(y_, mult(a_, y_)) = y_).
+
+%-----------------------------------------------------------------------
+
+fof(uniqueness, conjecture, x = y).
+		
+
+	

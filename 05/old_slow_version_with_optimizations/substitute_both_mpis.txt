@@ -1,0 +1,40 @@
+% i*A = A
+fof(left_identity, axiom,
+	! [A] : mult(i, A) = A).
+% A*i = A
+fof(right_identity, axiom,
+	! [A] : mult(A, i) = A).
+
+% (AB)C = A(BC)
+fof(associativity, axiom,
+	! [A,B,C] : mult(mult(A, B), C) = mult(A, mult(B, C))).
+
+% (A*)* = A
+fof(adjoint_twice, axiom,
+	! [A] : adjoint(adjoint(A)) = A).
+
+% (AB)* = B*A*
+fof(adjoint_mult, axiom, 
+	! [A,B] : adjoint(mult(A, B)) = mult(adjoint(B), adjoint(A))).
+
+%-----------------------------------------------------------------------
+
+fof(unitary, axiom,
+	! [A] : (unitary(A) <=> mult(A, adjoint(A)) = i & mult(adjoint(A), A) = i)).
+
+fof(theorem6, conjecture,
+	! [A, U, S, V, St] : (
+		A = mult(U, mult(S, V)) & 
+		unitary(U) &
+		unitary(V) & 
+		S = mult(S, mult(St, S)) &
+		St = mult(St, mult(S, St)) &
+		adjoint(mult(S, St)) = mult(S, St) &
+		adjoint(mult(St, S)) = mult(St, S)
+		=>
+		A = mult(A, mult(mult(adjoint(V), mult(St, adjoint(U))), A)) &
+		mult(adjoint(V), mult(St, adjoint(U))) = mult(mult(adjoint(V), mult(St, adjoint(U))), mult(A, mult(adjoint(V), mult(St, adjoint(U))))) &
+		adjoint(mult(A, mult(adjoint(V), mult(St, adjoint(U))))) = mult(A, mult(adjoint(V), mult(St, adjoint(U)))) &
+		adjoint(mult(mult(adjoint(V), mult(St, adjoint(U))), A)) = mult(mult(adjoint(V), mult(St, adjoint(U))), A)
+	)
+).
